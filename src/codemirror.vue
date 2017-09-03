@@ -126,10 +126,10 @@
       var _this = this
       this.editor = CodeMirror.fromTextArea(this.$el, this.options)
       this.editor.setValue(this.code || this.value || this.content)
-      this.editor.on('change', function(cm) {
+      this.editor.on('change', function(cm, obj) {
         _this.content = cm.getValue()
         if (!!_this.$emit) {
-          _this.$emit('change', _this.content)
+          _this.$emit('change', cm, obj)
           _this.$emit('input', _this.content)
         }
       })
